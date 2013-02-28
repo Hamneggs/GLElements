@@ -44,6 +44,8 @@
 	and setSize() must be used to manipulate the size of the Animation's
 	quad.
 	
+	The Z axis is used to differentiate between layers.
+	
 	TIMING:
 	===============================================================================
 	When using PASSIVE_ADVANCE, the timer's start time is by default the time
@@ -75,69 +77,242 @@
 */
 class Animation{
 	public:
+	
+		/*
+		Constructs an Animation. This is left default for simplicity of use.
+		*/
 		Animation(void);
+		
+		/*
+		Destructs the Animation. This is responsible for clearing up all GPU resources
+		taken up by this Animation.
+		*/
 		~Animation(void);
 		
+		/*
+		Initializes the Animation. In this version we initialize all location 
+		and size variables to 0.
+		*/
 		bool init(char * imagePath, float frameTime, int numFrames, ShaderProgram shader);
-		bool init(char * imagePath, float frameTime, int numFrames, float locX, float locY, float locZ, ShaderProgram shader);
 		
+		/*
+		Initializes the Animation.
+		*/
+		bool init(char * imagePath, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram shader);
+		
+		
+		/*
+		Draws the Animation using the internal location variables. Use this version if you
+		aren't updating the position every frame, or just like calling changeLocation() or
+		setLocation().
+		*/
 		void draw(void);
+		
+		/*
+		Draws the Animation at the specified location, ignoring the stored values
+		for location.
+		*/
 		void draw(float x, float y, float z);
 		
+		/*
+		Sets the location of the Animation.
+		*/
 		void setLocation(float newX, float newY, float newZ);
+		
+		/*
+		Changes the location of the Animation.
+		*/
 		void changeLocation(float changeX, float changeY, float changeZ);
 		
+		/*
+		Returns the X location of the Animation.
+		*/
 		float getX(void);
+		
+		/*
+		Returns the Y location of the Animation.
+		*/
 		float getY(void);
+		
+		/*
+		Returns the Z location of the Animation.
+		*/
 		float getZ(void);
 		
+		/*
+		Sets the size of the Animation's quad.
+		*/
 		void setSize(float newWidth, float newHeight);
+		
+		/*
+		Changes the size of the Animation's quad.
+		*/
 		void changeSize(float changeWidth, float changeHeight);
 		
+		/*
+		Returns the width of the Animation's quad.
+		*/
 		float getWidth(void);
+		
+		/*
+		Returns the height of the Animation's quad.
+		*/
 		float getHeight(void);
 		
-		void forceSetFrame(int frame);
+		/*
+		Sets the current frame that the animation is to display
+		to the one at the index specified.
+		*/
+		void forceSetFrame(int index);
+		
+		/*
+		Increments the current frame to display by 1.
+		*/
 		void forceUpdateFrame(void);
+		
+		/*
+		Returns the current frame to display.
+		*/
 		int getCurrentFrame(void);
+		
+		/*
+		Resets the timer to be synchronized to the time the
+		call to this function was made.
+		*/
 		void resetTimer(void);
 		
+		/*
+		Sets how long each frame is to last.
+		*/
 		void setFrameTime(float newFrameTime);
-		void changeFrameTime(float changeFrameTime);
-		float getFrameTime(void);
-		int getNumFrames(void);
-		void changeNumFrames(void);
 		
+		/*
+		Changes the duration of each frame.
+		*/
+		void changeFrameTime(float changeFrameTime);
+		
+		/*
+		Returns the frame duration.
+		*/
+		float getFrameTime(void);
+		
+		/*
+		Returns the total number of frames.
+		*/
+		int getNumFrames(void);
+		
+		/*
+		Sets the number of frames.
+		*/
+		void setNumFrames(void);
+				
+		/*
+		Sets the texture of this Animation to a different GLTexture.
+		*/
 		void setTexture(GLTexture * texture);
+		
+		/*
+		Returns the GLTexture associated with this Animation.
+		*/
 		GLTexture * getTexture(void);
 		
 		
 		
 	private:
+	
+		/*
+		The width of this Animation's quad.
+		*/
 		float width;
+		
+		/*
+		The height of this Animation's quad.
+		*/
 		float height;
 		
+		/*
+		The X location of this Animation. This refers
+		to the top left corner of the Animation's quad.
+		*/
 		float x;
+		
+		/*
+		The Y location of this Animation. This refers
+		to the top left corner of the Animation's quad.
+		*/
 		float y;
+		
+		/*
+		The Z location of this Animation. This refers
+		to the top left corner of the Animation's quad.
+		*/
 		float z; // For layer differentiation.
 		
+		/*
+		The duration of each frame of animation.
+		*/
 		float frametime;
+		
+		/*
+		The total number of frames.
+		*/
 		int numFrames;
+		
+		/*
+		The start time of the Animation.
+		*/
 		int startTime;
+		
+		/*
+		The current time of the Animation.
+		*/
 		int curTime;
 		
+		/*
+		The current frame of the animation,
+		stored locally for easy query.
+		*/
 		int curFrame;
 		
+		/*
+		The ID given to the vertex array object of this Animation by OpenGL.
+		*/
 		int vertArray;
+		
+		/*
+		The ID given to the VBO that stores the location data of the verts of
+		the Animation's quad.
+		*/
 		int locationBO;
+		
+		/*
+		The ID given to the VBO that stores the UV coordinate data of the
+		verts of the Animation's quad.
+		*/
 		int uvBO;
 		
+		/*
+		The texture that is used by the Animation.
+		*/
 		GLTexture texture;
 		
 		
 };
 
+/*
+Determines the frame advance mode of the Animation.
+*/
 enum ADVANCE_MODE{
+
+	/*
+	You must call one of the frame advance methods to change the current
+	frame.
+	*/
 	ACTIVE_ADVANCE = 0,
+	
+	/*
+	Frame advancing is handled internally and is determined by clock.
+	This allows for proper operation despite framerate.
+	*/
 	PASSIVE_ADVANCE = 1
 };
