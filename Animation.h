@@ -93,12 +93,12 @@ class Animation{
 		Initializes the Animation. In this version we initialize all location 
 		and size variables to 0.
 		*/
-		bool init(char * imagePath, float frameTime, int numFrames, ShaderProgram shader);
+		bool init(char * imagePath, float frameTime, int numFrames, ShaderProgram * shader);
 		
 		/*
 		Initializes the Animation.
 		*/
-		bool init(char * imagePath, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram shader);
+		bool init(char * imagePath, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram * shaderProgram);
 		
 		
 		/*
@@ -217,6 +217,16 @@ class Animation{
 		GLTexture * getTexture(void);
 		
 		/*
+		Sets the ShaderProgram that the Animation uses.
+		*/
+		void setShader(ShaderProgram * newProgram);
+		
+		/*
+		Returns a pointer to the shader that the Animation is using.
+		*/
+		ShaderProgram * getShader(void);
+		
+		/*
 		Returns the ADVANCE_MODE of this Animation.
 		*/
 		ADVANCE_MODE getAdvanceMode(void);
@@ -309,6 +319,11 @@ class Animation{
 		The ADVANCE_MODE of this animation.
 		*/
 		ADVANCE_MODE advanceMode;
+		
+		/*
+		The ShaderProgram that the Animation uses for drawing.
+		*/
+		ShaderProgram shader;
 		
 		
 };
