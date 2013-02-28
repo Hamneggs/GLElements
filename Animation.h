@@ -282,40 +282,40 @@ class Animation{
 		/*
 		The total number of frames.
 		*/
-		int numFrames;
+		unsigned int numFrames;
 		
 		/*
 		The start time of the Animation.
 		*/
-		int startTime;
+		unsigned int startTime;
 		
 		/*
 		The current time of the Animation.
 		*/
-		int curTime;
+		unsigned int curTime;
 		
 		/*
 		The current frame of the animation,
 		stored locally for easy query.
 		*/
-		int curFrame;
+		unsigned int curFrame;
 		
 		/*
 		The ID given to the vertex array object of this Animation by OpenGL.
 		*/
-		int vertArray;
+		unsigned int vertArray;
 		
 		/*
 		The ID given to the VBO that stores the location data of the verts of
 		the Animation's quad.
 		*/
-		int locationBO;
+		unsigned int locationBO;
 		
 		/*
 		The ID given to the VBO that stores the UV coordinate data of the
 		verts of the Animation's quad.
 		*/
-		int uvBO;
+		unsigned int uvBO;
 		
 		/*
 		The texture that is used by the Animation.
