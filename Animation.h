@@ -216,6 +216,15 @@ class Animation{
 		*/
 		GLTexture * getTexture(void);
 		
+		/*
+		Returns the ADVANCE_MODE of this Animation.
+		*/
+		ADVANCE_MODE getAdvanceMode(void);
+		
+		/*
+		Sets the ADVANCE_MODE of this Animation.
+		*/
+		void setAdvanceMode(ADVANCE_MODE newMode);
 		
 		
 	private:
@@ -295,6 +304,11 @@ class Animation{
 		The texture that is used by the Animation.
 		*/
 		GLTexture texture;
+		
+		/*
+		The ADVANCE_MODE of this animation.
+		*/
+		ADVANCE_MODE advanceMode;
 		
 		
 };
