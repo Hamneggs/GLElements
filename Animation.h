@@ -197,15 +197,15 @@ class Animation{
 		float getFrameTime(void);
 		
 		/*
+		Sets the number of frames.
+		*/
+		void setNumFrames(void);
+		
+		/*
 		Returns the total number of frames.
 		*/
 		int getNumFrames(void);
 		
-		/*
-		Sets the number of frames.
-		*/
-		void setNumFrames(void);
-				
 		/*
 		Sets the texture of this Animation to a different GLTexture.
 		*/
