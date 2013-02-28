@@ -1,7 +1,11 @@
 #include "freeimage.h"
 #include "Shaders.h"
 #include "GLTexture.h"
-#include <ctime>
+
+#ifndef _WIN32
+#include <sys/time.h>
+#else
+#include <windows.h>
 
 /*
 	This class represents a single animation that can be drawn to the screen.
@@ -75,6 +79,9 @@
 	you want to hack around these constraints. I'm not that much of an asshole.
 	
 */
+
+#ifndef GL_ANIMATION_GUARD
+#define GL_ANIMATION_GUARD
 class Animation{
 	public:
 	
@@ -199,7 +206,7 @@ class Animation{
 		/*
 		Sets the number of frames.
 		*/
-		void setNumFrames(void);
+		void setNumFrames(int numFrames);
 		
 		/*
 		Returns the total number of frames.
@@ -345,3 +352,5 @@ enum ADVANCE_MODE{
 	*/
 	PASSIVE_ADVANCE = 1
 };
+
+#endif
