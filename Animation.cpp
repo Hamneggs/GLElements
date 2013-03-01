@@ -11,9 +11,9 @@ Animation::Animation(void)
 	startTime = 0;
 	curTime = 0;
 	curFrame = 0;
-	vertArray = 0;
-	locationBO = 0;
-	uvBO = 0;
+	vertArray = 999999;
+	locationBO = 999999;
+	uvBO = 999999;
 	texture = NULL;
 	shader = NULL;
 	advanceMode = 0;
@@ -21,6 +21,9 @@ Animation::Animation(void)
 
 Animation::~Animation(void)
 {
+	glDeleteBuffers(1, &locationBO);
+	glDeleteBuffers(1, &uvBO);
+	glDeleteArrays(1, &vertArray);
 }
 
 bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, unsigned int newID)
@@ -32,6 +35,7 @@ bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * sha
 	this->id = newID;
 	
 	initVerts();
+	return (vertArray != 999999) && (locationBO != 999999) && (uvBO != 999999);
 }
 
 bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, unsigned int newID)
@@ -48,6 +52,7 @@ bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * sha
 	this->id = newID;
 	
 	initVerts();
+	return (vertArray != 999999) && (locationBO != 999999) && (uvBO != 999999);
 }
 
 void Animation::draw(void)
@@ -318,16 +323,20 @@ void Animation::initVerts(void)
 	glGenBuffers(1, &locationBO);
 	glGenBuffers(1, &uvBO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vboHandles[0]);
+	glBindVertexArray(vertArray);
+	
+	glBindBuffer(GL_ARRAY_BUFFER, &locationBO);
 	
 	glBufferData(GL_ARRAY_BUFFER, 12*sizeof(float), verts, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vboHandles[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, &uvBO);
 	glBufferData(GL_ARRAY_BUFFER, 8*sizeof(float), uv, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	
+	glBindVertexArray(0);
 	
 	free(verts);
 	free(uv);
