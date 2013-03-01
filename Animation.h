@@ -320,7 +320,7 @@ class Animation{
 		/*
 		The texture that is used by the Animation.
 		*/
-		GLTexture texture;
+		GLTexture * texture;
 		
 		/*
 		The ADVANCE_MODE of this animation.
@@ -330,7 +330,7 @@ class Animation{
 		/*
 		The ShaderProgram that the Animation uses for drawing.
 		*/
-		ShaderProgram shader;
+		ShaderProgram * shader;
 		
 		
 };
