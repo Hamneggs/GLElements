@@ -1,6 +1,8 @@
 #include "freeimage.h"
 #include "Shaders.h"
 #include "GLTexture.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 #ifndef _WIN32
 #include <sys/time.h>
@@ -71,6 +73,9 @@
 	and "z". The same goes for width and height, where the uniforms must be named
 	"width", and "height". Other uniforms needed are current frame "cur_frame"
 	and total number of frames "num_frames." 
+	
+	Another necessary element are the inclusion and use of transformation matrices.
+	They must be named "model_view"
 	
 	What you decide to do with those is up to you, but I would recommend following
 	the example of the example shaders.
