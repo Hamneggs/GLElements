@@ -26,7 +26,8 @@ Animation::~Animation(void)
 	glDeleteArrays(1, &vertArray);
 }
 
-bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, unsigned int newID)
+bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, 
+						float frameTime, int numFrames, unsigned int newID)
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
@@ -38,7 +39,9 @@ bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * sha
 	return (vertArray != 999999) && (locationBO != 999999) && (uvBO != 999999);
 }
 
-bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, unsigned int newID)
+bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, 
+					float frameTime, int numFrames, float locX, float locY, float locZ, 
+					float width, float height, unsigned int newID)
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
