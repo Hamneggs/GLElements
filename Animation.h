@@ -3,6 +3,7 @@
 #include "GLTexture.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include "GLCamera.h"
 
 #ifndef _WIN32
 #include <sys/time.h>
@@ -75,7 +76,9 @@
 	and total number of frames "num_frames." 
 	
 	Another necessary element are the inclusion and use of transformation matrices.
-	They must be named "model_view"
+	They must be named "cameraMatrix" (this is used in conjunction with the bound
+	GLCamera instance) and "modelMatrix". (This is used to pipe in location 
+	and size data.)
 	
 	What you decide to do with those is up to you, but I would recommend following
 	the example of the example shaders.
@@ -248,6 +251,16 @@ class Animation{
 		*/
 		void setAdvanceMode(ADVANCE_MODE newMode);
 		
+		/*
+		Returns the GLCamera pointer that the Animation uses for perspective.
+		*/
+		GLCamera * getCamera(void);
+		
+		/*
+		Changes the GLCamera pointer that the Animation uses for perspective.
+		*/
+		void setCamera(GLCamera * newCamera);
+		
 		
 	private:
 	
@@ -342,6 +355,10 @@ class Animation{
 		*/
 		ShaderProgram * shader;
 		
+		/*
+		The GLCamera that the animation is viewed through.
+		*/
+		GLCamera * camera;
 		
 };
 
