@@ -33,7 +33,7 @@ bool Animation::init(GLTexture * texture, float frameTime, int numFrames, Shader
 	initVerts();
 }
 
-bool Animation::init(char*imagePath, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram shaderProgram
+bool Animation::init(GLTexture * texture, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram shaderProgram
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
