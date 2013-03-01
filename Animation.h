@@ -100,12 +100,12 @@ class Animation{
 		Initializes the Animation. In this version we initialize all location 
 		and size variables to 0.
 		*/
-		bool init(char * imagePath, float frameTime, int numFrames, ShaderProgram * shader);
+		bool init(GLTexture * texture, float frameTime, int numFrames, ShaderProgram * shader);
 		
 		/*
 		Initializes the Animation.
 		*/
-		bool init(char * imagePath, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram * shaderProgram);
+		bool init(GLTexture * texture, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram * shaderProgram);
 		
 		
 		/*
@@ -246,6 +246,11 @@ class Animation{
 		
 	private:
 	
+		/*
+		Stores the location and size of the Animation's quad GPU-side.
+		*/
+		void updateVerts(void);
+		
 		/*
 		The width of this Animation's quad.
 		*/
