@@ -108,12 +108,12 @@ class Animation{
 		Initializes the Animation. In this version we initialize all location 
 		and size variables to 0.
 		*/
-		bool init(GLTexture * texture, float frameTime, int numFrames, ShaderProgram * shader);
+		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shader, float frameTime, int numFrames);
 		
 		/*
 		Initializes the Animation.
 		*/
-		bool init(GLTexture * texture, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram * shaderProgram);
+		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height);
 		
 		
 		/*
