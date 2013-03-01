@@ -19,7 +19,7 @@ class GLCamera{
 		GLCamera(void);
 		~GLCamera(void);
 		void lookAt(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ);
-		glm::mat4 getCameraMatrix(void);
+		glm::mat4 * getCameraMatrix(void);
 	private:
 		glm::mat4 cameraMatrix;
 };
