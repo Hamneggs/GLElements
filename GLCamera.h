@@ -1,5 +1,6 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include <glm/gtc/type_ptr.hpp>
 
 /*
 	GLCamera is just what it sounds like. This class encapsulates
@@ -22,4 +23,5 @@ class GLCamera{
 	private:
 		glm::mat4 cameraMatrix;
 };
+#endif
 	
