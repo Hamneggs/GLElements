@@ -246,18 +246,18 @@ void Animation::initVerts(void)
 
 	// Create all the vertex locations.
 	verts[0]  = 0;
-	verts[1]  = h;
+	verts[1]  = 1;
 	verts[2]  = 0;
 
 	verts[3]  = 0;
 	verts[4]  = 0;
 	verts[5]  = 0;
 
-	verts[6]  = w;
-	verts[7]  = h;
+	verts[6]  = 1;
+	verts[7]  = 1;
 	verts[8]  = 0;
 
-	verts[9]  = w;
+	verts[9]  = 1;
 	verts[10] = 0;
 	verts[11] = 0;
 
