@@ -105,12 +105,12 @@ class Animation{
 		Initializes the Animation. In this version we initialize all location 
 		and size variables to 0.
 		*/
-		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shader, float frameTime, int numFrames);
+		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shader, float frameTime, int numFrames, unsigned int newID);
 		
 		/*
 		Initializes the Animation.
 		*/
-		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height);
+		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, unsigned int newID);
 		
 		
 		/*
@@ -185,7 +185,7 @@ class Animation{
 		/*
 		Returns the current frame to display.
 		*/
-		int getCurrentFrame(void);
+		unsigned int getCurrentFrame(void);
 		
 		/*
 		Resets the timer to be synchronized to the time the
@@ -216,7 +216,7 @@ class Animation{
 		/*
 		Returns the total number of frames.
 		*/
-		int getNumFrames(void);
+		unsigned int getNumFrames(void);
 		
 		/*
 		Sets the texture of this Animation to a different GLTexture.
@@ -258,8 +258,17 @@ class Animation{
 		*/
 		void setCamera(GLCamera * newCamera);
 		
+		/*
+		Returns the ID of this Animation.
+		*/
+		unsigned int getID(void);
 		
 	private:
+	
+		/*
+		This Animation's ID, used for identification.
+		*/
+		unsigned int id;
 	
 		/*
 		Stores the location and size of the Animation's quad GPU-side.

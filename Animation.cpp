@@ -23,17 +23,18 @@ Animation::~Animation(void)
 {
 }
 
-bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames)
+bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, unsigned int newID)
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
 	this->numFrames = numFrames;
 	this->shader = shaderProgram;
+	this->id = newID;
 	
 	initVerts();
 }
 
-bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height)
+bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, unsigned int newID)
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
@@ -44,6 +45,7 @@ bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * sha
 	this->z = locZ;
 	this->width = width;
 	this->height = height;
+	this->id = newID;
 	
 	initVerts();
 }
