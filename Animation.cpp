@@ -23,7 +23,7 @@ Animation::~Animation(void)
 {
 }
 
-bool Animation::init(GLTexture * texture, GLCamera * camera, float frameTime, int numFrames, ShaderProgram * shaderProgram)
+bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames)
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
@@ -33,7 +33,7 @@ bool Animation::init(GLTexture * texture, GLCamera * camera, float frameTime, in
 	initVerts();
 }
 
-bool Animation::init(GLTexture * texture, GLCamera * camera, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height, ShaderProgram shaderProgram
+bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float frameTime, int numFrames, float locX, float locY, float locZ, float width, float height)
 {
 	this->texture = texture;
 	this->frameTime = frameTime;
@@ -79,6 +79,25 @@ void Animation::draw(void)
 
 void Animation::draw(float x, float y, float z)
 {
+	if(advanceMode = PASSIVE_ADVANCE)
+	{
+		#ifdef _WIN32
+		// Now this is nice and easy.
+		DWORD currentTime = getTickCount();
+		curTime = (unsigned int)currentTime;
+		
+		#else
+		// This isn't really.
+		timeval timeValue;
+		gettimeofday(timeValue, NULL);
+		curTime = (unsigned int)timeValue.Milliseconds;
+		
+		#endif
+		
+		curFrame = (curTime-startTime)%( (unsigned int)(frameTime * 1000) );
+		curFrame %= numFrames;
+	}		
+		
 	texture->bindTexture();
 	
 	GLuint sampleLocation = 99999;
@@ -109,18 +128,28 @@ void Animation::draw(float x, float y, float z)
 
 void Animation::setLocation(float newX, float newY, float newZ)
 {
+	x = newX;
+	y = newY;
+	z = newZ;
 }
 
 void Animation::changeLocation(float changeX, float changeY, float changeZ)
 {
+	x += changeX;
+	y += changeY;
+	z += changeZ;
 }
 
 void Animation::setSize(float newWidth, float newHeight)
 {
+	width = newWidth;
+	height = newHeight;
 }
 
 void Animation::changeSize(float changeWidth, float changeHeight)
 {
+	width += changeWidth;
+	height += changeHeight;
 }
 
 float Animation::getX(void)
@@ -238,6 +267,16 @@ void Animation::setAdvanceMode(ADVANCE_MODE newMode)
 	advanceMode = newMode;
 }
 
+GLCamera * getCamera(void)
+{
+	return camera;
+}
+
+void setCamera(GLCamera * newCamera)
+{
+	camera = newCamera;
+}
+
 void Animation::initVerts(void)
 {
 	
@@ -294,4 +333,23 @@ void Animation::initVerts(void)
 	
 	free(verts);
 	free(uv);
+}
+
+void Animation::updateTimer(void)
+{
+	#ifdef _WIN32
+	// Now this is nice and easy.
+	DWORD currentTime = getTickCount();
+	curTime = (unsigned int)currentTime;
+	
+	#else
+	// This isn't really.
+	timeval timeValue;
+	gettimeofday(timeValue, NULL);
+	curTime = (unsigned int)timeValue.Milliseconds;
+	
+	#endif
+	
+	curFrame = (curTime-startTime)%( (unsigned int)(frameTime * 1000) );
+	curFrame %= numFrames;
 }

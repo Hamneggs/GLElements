@@ -270,6 +270,11 @@ class Animation{
 		void initVerts(void);
 		
 		/*
+		Updates the frame counter based on the current time.
+		*/
+		void updateTimer(void);
+		
+		/*
 		The width of this Animation's quad.
 		*/
 		float width;
