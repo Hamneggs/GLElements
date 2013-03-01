@@ -249,7 +249,7 @@ class Animation{
 		/*
 		Stores the location and size of the Animation's quad GPU-side.
 		*/
-		void updateVerts(void);
+		void initVerts(void);
 		
 		/*
 		The width of this Animation's quad.
