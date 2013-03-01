@@ -69,15 +69,12 @@
 	SHADING:
 	================================================================================
 	The Animations require a very specific ShaderProgram. It must accept location
-	data in layout position 0, and UV data in layout position 1. Also it
-	must have passed in the X, Y, and Z coordinates as uniforms "x", "y", 
-	and "z". The same goes for width and height, where the uniforms must be named
-	"width", and "height". Other uniforms needed are current frame "cur_frame"
-	and total number of frames "num_frames." 
+	data in layout position 0, and UV data in layout position 1. Uniforms needed are 
+	current frame "cur_frame" and total number of frames "num_frames." (both ints).
 	
 	Another necessary element are the inclusion and use of transformation matrices.
-	They must be named "cameraMatrix" (this is used in conjunction with the bound
-	GLCamera instance) and "modelMatrix". (This is used to pipe in location 
+	They must be named "camera_matrix" (this is used in conjunction with the bound
+	GLCamera instance) and "model_matrix". (This is used to pipe in location 
 	and size data.)
 	
 	What you decide to do with those is up to you, but I would recommend following

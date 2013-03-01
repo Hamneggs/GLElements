@@ -50,23 +50,32 @@ bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * sha
 
 void Animation::draw(void)
 {
+
+	if(advanceMode == PASSIVE_ADVANCE)
+	{
+		updateTimer();
+	}	
+	
 	texture->bindTexture();
 	
-	GLuint sampleLocation = 99999;
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "x");
-	glUniform1f(sampleLocation, x);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "y");
-	glUniform1f(sampleLocation, y);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "z");
-	glUniform1f(sampleLocation, z);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "width");
-	glUniform1f(sampleLocation, width);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "height");
-	glUniform1f(sampleLocation, height);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
-	glUniform1i(sampleLocation, height);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
-	glUniform1i(sampleLocation, height);
+	GLuint uniformLocation = 99999;
+	
+	glm::mat4 modelScale = glm::scale(glm::mat4(1.0f), glm::vec3(width, height, 1.0f));
+	glm::mat4 modelTranslation = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
+	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
+	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
+	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
+	glUniform1i(uniformLocation, curFrame);
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
+	glUniform1i(uniformLocation, numFrames);
+	
+	
 	
 	shader->useProgram();
 	
@@ -79,42 +88,29 @@ void Animation::draw(void)
 
 void Animation::draw(float x, float y, float z)
 {
-	if(advanceMode = PASSIVE_ADVANCE)
+	if(advanceMode == PASSIVE_ADVANCE)
 	{
-		#ifdef _WIN32
-		// Now this is nice and easy.
-		DWORD currentTime = getTickCount();
-		curTime = (unsigned int)currentTime;
-		
-		#else
-		// This isn't really.
-		timeval timeValue;
-		gettimeofday(timeValue, NULL);
-		curTime = (unsigned int)timeValue.Milliseconds;
-		
-		#endif
-		
-		curFrame = (curTime-startTime)%( (unsigned int)(frameTime * 1000) );
-		curFrame %= numFrames;
+		updateTimer();
 	}		
 		
 	texture->bindTexture();
 	
-	GLuint sampleLocation = 99999;
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "x");
-	glUniform1f(sampleLocation, x);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "y");
-	glUniform1f(sampleLocation, y);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "z");
-	glUniform1f(sampleLocation, z);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "width");
-	glUniform1f(sampleLocation, width);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "height");
-	glUniform1f(sampleLocation, height);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
-	glUniform1i(sampleLocation, height);
-	sampleLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
-	glUniform1i(sampleLocation, height);
+	GLuint uniformLocation = 99999;
+	
+	glm::mat4 modelScale = glm::scale(glm::mat4(1.0f), glm::vec3(width, height, 1.0f));
+	glm::mat4 modelTranslation = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
+	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
+	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
+	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
+	glUniform1i(uniformLocation, curFrame);
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
+	glUniform1i(uniformLocation, numFrames);
 	
 	
 	shader->useProgram();
