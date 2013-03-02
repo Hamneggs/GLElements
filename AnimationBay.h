@@ -59,7 +59,7 @@ class AnimationBay{
 		/*
 		Returns the number of tiles in the bay.
 		*/
-		unsigned int numberOfTiles(void);
+		unsigned int getNumAnimations(void);
 	
 	private:
 	
