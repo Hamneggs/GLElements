@@ -73,5 +73,10 @@ class AnimationBay{
 		*/
 		std::vector<Animation> animations;
 		
+		/*
+		The current ID.
+		*/
+		unsigned int currentID;
+		
 		
 };

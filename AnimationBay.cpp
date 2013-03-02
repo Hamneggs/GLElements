@@ -2,7 +2,7 @@
 
 AnimationBay::AnimationBay(void)
 {
-	// Nothing needs to be done in the constructor.
+	currentID = 0;
 }
 
 AnimationBay::~AnimationBay(void)
@@ -20,8 +20,11 @@ bool AnimationBay::addAnimation(GLTexture * texture, ShaderProgram * program, fl
 								float x=0, float y=0, float z=0, float width=0, float height=0)
 {
 	unsigned int previousSize = animations.size();
+	
 	animations.push_back(Animation(texture, camera, program, frameTime, numFrames, x, y, z, 
-									width, height, (unsigned int)animations.size()));
+									width, height, currentID);
+	currentID ++;
+	
 	unsigned int currentSize = animations.size();
 	return (currentSize == previousSize+1);
 }
