@@ -1,5 +1,10 @@
 #include <vector>
 #include "Animation.h"
+
+/*
+	This class represents a collection of Animations. This allows a sprite-table ideology
+	that allows Animations to be drawn repeatedly.
+*/
 class AnimationBay{
 	public:
 	
