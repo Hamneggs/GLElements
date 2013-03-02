@@ -55,6 +55,11 @@ class AnimationBay{
 		Returns the camera that is supplied to all of the Animations in the bay.
 		*/
 		GLCamera * getCamera(void);
+		
+		/*
+		Returns the number of tiles in the bay.
+		*/
+		unsigned int numberOfTiles(void);
 	
 	private:
 	
