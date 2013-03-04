@@ -132,6 +132,42 @@ void Animation::draw(float x, float y, float z)
 	shader->useProgram();
 }
 
+void Animation::void draw(float x, float y, float z, float width, float height)
+{
+	if(advanceMode == PASSIVE_ADVANCE)
+	{
+		updateTimer();
+	}		
+		
+	texture->bindTexture();
+	
+	GLuint uniformLocation = 99999;
+	
+	glm::mat4 modelScale = glm::scale(glm::mat4(1.0f), glm::vec3(width, height, 1.0f));
+	glm::mat4 modelTranslation = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
+	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
+	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
+	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
+	glUniform1i(uniformLocation, curFrame);
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
+	glUniform1i(uniformLocation, numFrames);
+	
+	
+	shader->useProgram();
+	
+	glBindVertexArray(vertexArray);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	
+	glBindVertexArray(0);
+	shader->useProgram();
+}
+
 void Animation::setLocation(float newX, float newY, float newZ)
 {
 	x = newX;

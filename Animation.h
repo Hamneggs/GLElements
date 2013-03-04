@@ -47,10 +47,6 @@
 	you can use the stored values and call draw() with no arguments, using
 	changeLocation() and setLocation() to update the position of the quad.
 	
-	Since size is something that will be changed less often, changeSize() 
-	and setSize() must be used to manipulate the size of the Animation's
-	quad.
-	
 	The Z axis is used to differentiate between layers.
 	
 	TIMING:
@@ -125,6 +121,12 @@ class Animation{
 		for location.
 		*/
 		void draw(float x, float y, float z);
+		
+		/*
+		Draws the Animation at the specified location and size, ignoring the stored values
+		for location and size.
+		*/
+		void draw(float x, float y, float z, float width, float height);
 		
 		/*
 		Sets the location of the Animation.
