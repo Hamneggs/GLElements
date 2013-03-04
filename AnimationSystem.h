@@ -118,6 +118,11 @@ class AnimationSystem
 		*/
 		void drawSystem(float x, float y, float z);
 		
+		/*
+		Renders the Animation System at the given location and size.
+		*/
+		void drawSystem(float x, float y, float z, float width, float height);
+		
 	private:
 			
 		/*
