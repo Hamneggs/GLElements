@@ -174,6 +174,31 @@ void AnimationSystem::drawSystem(float x, float y, float z, float width, float h
 	currentState.anim->draw(x, y, z, width, height);
 }
 
+float AnimationSystem::getX(void)
+{
+	return x;
+}
+
+float AnimationSystem::getY(void)
+{
+	return y;
+}
+
+float AnimationSystem::getZ(void)
+{
+	return z;
+}
+
+float AnimationSystem::getWidth(void)
+{	
+	return width;
+}
+
+float AnimationSystem::getHeight(void)
+{
+	return height;
+}
+
 
 
 

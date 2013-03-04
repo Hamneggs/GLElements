@@ -123,6 +123,31 @@ class AnimationSystem
 		*/
 		void drawSystem(float x, float y, float z, float width, float height);
 		
+		/*
+		Returns the X location of this AnimationSystem.
+		*/
+		float getX(void);
+		
+		/*
+		Returns the Y location of this Animation System.
+		*/
+		float getY(void);
+		
+		/*
+		Returns the Z location of this Animation System.
+		*/
+		float getZ(void);
+		
+		/*
+		Returns the width of this Animation System.
+		*/
+		float getWidth(void);
+		
+		/*
+		Returns the height of this Animation System.
+		*/
+		float getHeight(void);
+		
 	private:
 			
 		/*
