@@ -39,12 +39,12 @@ class AnimationSystem
 		/*
 		Constructs the Animation System.
 		*/
-		AnimationSystem();
+		AnimationSystem(void);
 		
 		/*
 		Destructs the Animation System.
 		*/
-		~AnimationSystem();
+		~AnimationSystem(void);
 			
 		/*
 		Initializes the Animation system by giving it a location and size.
@@ -96,7 +96,7 @@ class AnimationSystem
 		/*
 		Changes the location of the Animation System.
 		*/
-		void chnageLocation(float changeX, float changeY, float changeZ);
+		void changeLocation(float changeX, float changeY, float changeZ);
 			
 		/*
 		Sets the size of the Animation System.
