@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GL_SHADER_GUARD
+#define GL_SHADER_GUARD
+
 #include <iostream>
 #include <vector>
 #include <glew.h>
@@ -297,3 +299,5 @@ private:
 
 #define BASIC_VERT_SHADER "#version 140 uniform Transformation { mat4 projection_matrix; mat4 modelview_matrix; }; in vec3 vertex; void main() { gl_Position = projection_matrix * modelview_matrix * vec4(vertex, 1.0);}"
 #define BASIC_FRAG_SHADER "#version 120 void main(void) {    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); }"
+
+#endif

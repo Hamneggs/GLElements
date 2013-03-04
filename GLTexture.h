@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GL_TEXTURE_GUARD
+#define GL_TEXTURE_GUARD
+
 #include <stdlib.h>
 #include <GL\glew.h>
 #include <GL\glut.h>
@@ -187,3 +189,4 @@ private:
 	GLuint sampler;
 };
 
+#endif

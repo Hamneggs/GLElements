@@ -1,3 +1,6 @@
+#ifndef ANIMATION_BAY_GUARD
+#define ANIMATION_BAY_GUARD
+
 #include <vector>
 #include "Animation.h"
 
@@ -80,3 +83,5 @@ class AnimationBay{
 		
 		
 };
+
+#endif

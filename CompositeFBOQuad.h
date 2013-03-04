@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COMPOSITE_FBO_GUARD
+#define COMPOSITE_FBO_GUARD
 
 #include "GLFrameBuffer.h"
 #include "Shaders.h"
@@ -189,3 +190,4 @@ private:
 
 };
 
+#endif

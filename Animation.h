@@ -1,3 +1,6 @@
+#ifndef GL_ANIMATION_GUARD
+#define GL_ANIMATION_GUARD
+
 #include "freeimage.h"
 #include "Shaders.h"
 #include "GLTexture.h"
@@ -81,8 +84,7 @@
 	
 */
 
-#ifndef GL_ANIMATION_GUARD
-#define GL_ANIMATION_GUARD
+
 class Animation{
 	public:
 	

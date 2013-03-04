@@ -1,3 +1,6 @@
+#ifndef ANIMATION_SYSTEM_GUARD
+#define ANIMATION_SYSTEM_GUARD
+
 #include "Animation.h"
 #include <vector>
 
@@ -186,3 +189,5 @@ class AnimationSystem
 		float height;
 		
 };
+
+#endif

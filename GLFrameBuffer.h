@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GL_FRAME_BUFFER_GUARD
+#define GL_FRAME_BUFFER_GUARD
 
 #include <stdlib.h>
 #include <GL\glew.h>
@@ -135,3 +136,4 @@ private:
 
 };
 
+#endif

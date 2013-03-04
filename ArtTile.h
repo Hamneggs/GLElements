@@ -3,6 +3,8 @@
 	
 	This class defines an abstract art asset tile.
 */
+#ifndef ART_TILE_GUARD
+#define ART_TILE_GUARD
 
 class ArtTile
 {
@@ -99,3 +101,5 @@ class ArtTile
 		*/
 		int height;
 };
+
+#endif

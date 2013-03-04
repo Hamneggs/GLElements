@@ -1,3 +1,6 @@
+#ifndef GLCAMERA_GUARD
+#define GLCAMERA_GUARD
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtc/type_ptr.hpp>
@@ -12,8 +15,7 @@
 	see different stuff.
 */
 
-#ifndef GLCAMERA_GUARD
-#define GLCAMERA_GUARD
+
 class GLCamera{
 	public:
 	
@@ -43,5 +45,6 @@ class GLCamera{
 		*/
 		glm::mat4 cameraMatrix;
 };
+
 #endif
 	

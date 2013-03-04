@@ -1,4 +1,6 @@
-#pragma once
+#ifndef FBO_TEXTURED_QUAD_GAUARD
+#define FBO_TEXTURED_QUAD_GAUARD
+
 #include "GLFrameBuffer.h"
 #include "Shaders.h"
 class FBOTexturedQuad
@@ -176,3 +178,4 @@ private:
 
 };
 
+#endif
