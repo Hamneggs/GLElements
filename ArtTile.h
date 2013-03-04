@@ -11,17 +11,17 @@ class ArtTile
 		/*
 		Renders the Art Tile.
 		*/
-		void draw(void);
+		virtual void draw(void);
 		
 		/*
 		Renders the Art Tile at the given location.
 		*/
-		void draw(float x, float y, float z);
+		virtual void draw(float x, float y, float z);
 		
 		/*
 		Renders the Art Tile at the given location and size.
 		*/
-		void draw(float x, float y, float z, float width, float height);
+		virtual void draw(float x, float y, float z, float width, float height);
 		
 		/*
 		Sets the location of the Art Tile.
@@ -79,7 +79,6 @@ class ArtTile
 		The X location of this Art Tile.
 		*/
 		int x;
-		
 		/*
 		The Y location of this Art Tile.
 		*/
