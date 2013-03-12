@@ -161,3 +161,65 @@ void StaticTile::setCamera(GLCamera * newCamera)
 {
 	camera = newCamera;
 }
+
+void StaticTile::initVerts(void)
+{
+	
+	// Create an array to store the vertices.
+	float * verts = (float *) malloc(sizeof(float)*12);
+
+	// Create all the vertex locations.
+	verts[0]  = 0;
+	verts[1]  = 1;
+	verts[2]  = 0;
+
+	verts[3]  = 0;
+	verts[4]  = 0;
+	verts[5]  = 0;
+
+	verts[6]  = 1;
+	verts[7]  = 1;
+	verts[8]  = 0;
+
+	verts[9]  = 1;
+	verts[10] = 0;
+	verts[11] = 0;
+
+	// Create an array to store the vertex UV coordinates.
+	float * uv = (float * ) malloc(sizeof(float)*8);
+
+	// Create all the UV coordinates.
+	uv[0] = 0.0f;
+	uv[1] = 0.0f;
+
+	uv[2] = 0.0f;
+	uv[3] = 1.0f;
+
+	uv[4] = 1.0f;
+	uv[5] = 0.0f;
+
+	uv[6] = 1.0f;
+	uv[7] = 1.0f;
+	
+	glGenVertexArrays(1, &vertArray);
+	glGenBuffers(1, &locationBO);
+	glGenBuffers(1, &uvBO);
+
+	glBindVertexArray(vertArray);
+	
+	glBindBuffer(GL_ARRAY_BUFFER, &locationBO);
+	
+	glBufferData(GL_ARRAY_BUFFER, 12*sizeof(float), verts, GL_DYNAMIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, &uvBO);
+	glBufferData(GL_ARRAY_BUFFER, 8*sizeof(float), uv, GL_DYNAMIC_DRAW);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	
+	glBindVertexArray(0);
+	
+	free(verts);
+	free(uv);
+}
