@@ -5,6 +5,10 @@
 #include "Shaders.h"
 #include "GLTexture.h"
 
+/*
+	The Static Tile is a non-animated art tile. It's like one of the dirt tiles in Sonic.
+	This simply draws a texture to the screen onto a quad at the given location.
+*/
 class StaticTile : public ArtTile
 {
 	public:
@@ -91,8 +95,19 @@ class StaticTile : public ArtTile
 		*/
 		unsigned int uvBO;
 		
+		/*
+		The camera object used for rendering of the tile.
+		*/
 		GLCamera * camera;
+		
+		/*
+		The texture that is drawn to the tile.
+		*/
 		GLTexture * texture;
+		
+		/*
+		The shader program that renders the tile.
+		*/
 		ShaderProgram * shader;
 };
 
