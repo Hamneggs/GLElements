@@ -4,6 +4,7 @@
 #include "ArtTile.h"
 #include "Shaders.h"
 #include "GLTexture.h"
+#include "GLCamera.h"
 
 /*
 	The Static Tile is a non-animated art tile. It's like one of the dirt tiles in Sonic.
@@ -12,6 +13,7 @@
 class StaticTile : public ArtTile
 {
 	public:
+	
 		StaticTile(void);
 		~StaticTile(void);
 		
