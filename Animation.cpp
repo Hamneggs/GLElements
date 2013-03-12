@@ -314,12 +314,12 @@ void Animation::setAdvanceMode(ADVANCE_MODE newMode)
 	advanceMode = newMode;
 }
 
-GLCamera * getCamera(void)
+GLCamera * Animation::getCamera(void)
 {
 	return camera;
 }
 
-void setCamera(GLCamera * newCamera)
+void Animation::setCamera(GLCamera * newCamera)
 {
 	camera = newCamera;
 }
