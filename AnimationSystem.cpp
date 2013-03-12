@@ -15,13 +15,14 @@ AnimationSystem::~AnimationSystem(void)
 	// Nothing to do here.
 }
 
-void AnimationSystem::init(float x, float y, float z, float width, float height)
+void AnimationSystem::init(float x, float y, float z, float width, float height, unsigned int id)
 {
 	this->x = x;
 	this->y = y;
 	this->z = z;
 	this->width = width;
 	this->height = height;
+	this->id = id;
 }
 
 int AnimationSystem::addNewState(Animation * newAnimation)
@@ -197,6 +198,11 @@ float AnimationSystem::getWidth(void)
 float AnimationSystem::getHeight(void)
 {
 	return height;
+}
+
+unsigned int AnimationSystem::getID(void)
+{
+	return id;
 }
 
 

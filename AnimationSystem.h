@@ -16,6 +16,9 @@
 	at the current location and size of the Animation System.
 		This is meant for entities that have various states, such as characters in a 
 	2-D game, e.g. Running, Jumping, walking, falling, etc.
+		Since Animation Systems themselves are collections of Animations, they do not
+	have their own bay. It is unlikely that an entity will need more than a few 
+	Aniamtion Systems.
 */
 
 /*
@@ -52,7 +55,7 @@ class AnimationSystem
 		/*
 		Initializes the Animation system by giving it a location and size.
 		*/
-		void init(float x, float y, float z, float width, float height);
+		void init(float x, float y, float z, float width, float height, int id);
 			
 		/*
 		Adds a new Animation State to the system, allocating a new State ID that is
@@ -151,6 +154,11 @@ class AnimationSystem
 		*/
 		float getHeight(void);
 		
+		/*
+		Returns the ID of this Animation System.
+		*/
+		unsigned int getID(void);
+		
 	private:
 			
 		/*
@@ -187,6 +195,11 @@ class AnimationSystem
 		The height of the Animation System.
 		*/
 		float height;
+		
+		/*
+		The ID of this Animation System.
+		*/
+		unsigned int id;
 		
 };
 

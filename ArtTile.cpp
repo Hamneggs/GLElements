@@ -92,3 +92,11 @@ float ArtTile::getHeight(void)
 {
 	return height;
 }
+
+/*
+Returns the ID of this Art Tile.
+*/
+unsigned int ArtTile::getID(void)
+{
+	return id;
+}

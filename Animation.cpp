@@ -235,6 +235,11 @@ int Animation::getCurrentFrame(void)
 	return curFrame;
 }
 
+unsigned int Animation::getID(void)
+{
+	return id;
+}
+
 void Animation::resetTimer(void)
 {
 	#ifdef _WIN32

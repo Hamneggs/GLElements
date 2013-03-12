@@ -13,17 +13,17 @@ class ArtTile
 		/*
 		Renders the Art Tile.
 		*/
-		virtual void draw(void);
+		virtual void draw(void) = 0;
 		
 		/*
 		Renders the Art Tile at the given location.
 		*/
-		virtual void draw(float x, float y, float z);
+		virtual void draw(float x, float y, float z) = 0;
 		
 		/*
 		Renders the Art Tile at the given location and size.
 		*/
-		virtual void draw(float x, float y, float z, float width, float height);
+		virtual void draw(float x, float y, float z, float width, float height) = 0;
 		
 		/*
 		Sets the location of the Art Tile.
@@ -69,6 +69,11 @@ class ArtTile
 		Returns the height of this Art Tile.
 		*/
 		float getHeight(void);
+		
+		/*
+		Returns the ID of this Art Tile.
+		*/
+		unsigned getID(void);
 		
 	protected:
 	
