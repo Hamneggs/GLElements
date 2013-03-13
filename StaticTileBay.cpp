@@ -1,31 +1,31 @@
-#include "AnimatedTileBay.h"
+#include "StaticTileBay.h"
 
-AnimatedTileBay::AnimatedTileBay(void)
+StaticTileBay::StaticTileBay(void)
 {
 	currentID = 0;
 }
 
-AnimatedTileBay::~AnimatedTileBay(void)
+StaticTileBay::~StaticTileBay(void)
 {
 	// Blah
 }
 
-bool AnimatedTileBay::init(void)
+bool StaticTileBay::init(void)
 {
 	return true;
 }
 
-bool AnimatedTileBay::addTile(Animation * animation, float x=0, float y=0, float z=0, 
+bool StaticTileBay::addTile(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float x=0, float y=0, float z=0, 
 						float width=0, float height=0)
 {
 	unsigned int previousSize = tiles.size();
-	tiles.push_back(AnimatedTile(animation, x, y, z, width, height, currentID);
+	tiles.push_back(StaticTile(animation, x, y, z, width, height, currentID);
 	
 	unsigned int currentSize = tiles.size();
 	return (current == previousSize+1);
 }
 
-AnimatedTile * AnimatedTileBay::getTileByID(int id)
+StaticTile * StaticTileBay::getTileByID(int id)
 {
 	for(unsigned int i = id; i >= 0; i--)
 	{
@@ -40,9 +40,9 @@ AnimatedTile * AnimatedTileBay::getTileByID(int id)
 	}
 }
 
-AnimatedTile AnimatedTileBay::removeTileByID(int id)
+StaticTile StaticTileBay::removeTileByID(int id)
 {
-	AnimatedTile returnMe;
+	StaticTile returnMe;
 	unsigned int indexOf = 99999999;
 	for(unsigned int i = id; i >= 0; i--)
 	{
@@ -61,9 +61,9 @@ AnimatedTile AnimatedTileBay::removeTileByID(int id)
 	return returnMe;
 }
 
-bool AnimatedTileBay::deleteTileByID(int id)
+bool StaticTileBay::deleteTileByID(int id)
 {
-	AnimatedTile returnMe;
+	StaticTile returnMe;
 	unsigned int indexOf = 99999999;
 	bool found = false;
 	for(unsigned int i = id; i >= 0; i--)
@@ -91,7 +91,7 @@ bool AnimatedTileBay::deleteTileByID(int id)
 	}
 }
 
-unsigned int AnimatedTileBay::getNumTiles(void)
+unsigned int StaticTileBay::getNumTiles(void)
 {
 	return tiles.size();
 }

@@ -27,17 +27,17 @@ class AnimatedTileBay{
 					float width=0, float height=0);
 					
 		/*
-		Returns an Animation by searching for it in the arraylist.
+		Returns an AnimatedTile by searching for it in the arraylist.
 		*/
-		Animation * getTileByID(int id);
+		AnimatedTile * getTileByID(int id);
 		
 		/*
-		Removes an Animation from the bay and returns it whole.
+		Removes an AnimatedTile from the bay and returns it whole.
 		*/
-		Animation removeTileByID(int id);
+		AnimatedTile removeTileByID(int id);
 		
 		/*
-		Deletes an Animation without returning it.
+		Deletes an AnimatedTile without returning it.
 		*/
 		bool deleteTileByID(int id);
 		
@@ -52,7 +52,7 @@ class AnimatedTileBay{
 		/*
 		The vector that stores the Animated Tiles of this bay.
 		*/
-		std::vector<Animation> tiles;
+		std::vector<AnimatedTile> tiles;
 		
 		/*
 		The current ID.
