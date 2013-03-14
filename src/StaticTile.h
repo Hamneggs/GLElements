@@ -22,6 +22,7 @@
 						
 		Vertex location data is required at layout position 0, and UV coordinate
 	data is required at layout position 1. 
+	
 */
 class StaticTile : public ArtTile
 {
@@ -39,7 +40,9 @@ class StaticTile : public ArtTile
 		/*
 		Initializes the Static Tile.
 		*/
-		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float locX, float locY, float locZ, float width, float height, unsigned int newID);
+		bool init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, 
+					float locX, float locY, float locZ, float width, float height, 
+					unsigned int newID);
 		
 		/*
 		Renders the Art Tile.
