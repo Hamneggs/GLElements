@@ -122,6 +122,9 @@ void Animation::draw(float x, float y, float z)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
 	glUniform1i(uniformLocation, numFrames);
 	
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "anim_sampler");
+	
+	
 	
 	shader->useProgram();
 	
@@ -157,6 +160,9 @@ void Animation::void draw(float x, float y, float z, float width, float height)
 	glUniform1i(uniformLocation, curFrame);
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
 	glUniform1i(uniformLocation, numFrames);
+	
+	uniformLocation = glGetuniformLocation(shader->getProgramID(), "anim_sampler");
+	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	
 	shader->useProgram();

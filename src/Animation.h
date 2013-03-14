@@ -76,6 +76,9 @@
 	GLCamera instance) and "model_matrix". (This is used to pipe in location 
 	and size data.)
 	
+	Yet another uniform is needed to pass in the animation texture, and must be called
+	"anim_sampler".
+	
 	What you decide to do with those is up to you, but I would recommend following
 	the example of the example shaders.
 	
