@@ -71,7 +71,12 @@ void StaticTile::draw(void)
 	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());	
+	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	
+	uniformLocation = glGetuniformLocation(shader->getProgramID(), "tex_sampler");
+	glUniform1i(uniformLocation, texture->getSamplerID());
+
+	
 	
 	shader->useProgram();
 	
@@ -98,6 +103,9 @@ void StaticTile::draw(float x, float y, float z)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
 	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());	
 	
+	uniformLocation = glGetuniformLocation(shader->getProgramID(), "tex_sampler");
+	glUniform1i(uniformLocation, texture->getSamplerID());
+	
 	shader->useProgram();
 	
 	glBindVertexArray(vertexArray);
@@ -122,6 +130,9 @@ void StaticTile::void draw(float x, float y, float z, float width, float height)
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
 	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());	
+	
+	uniformLocation = glGetuniformLocation(shader->getProgramID(), "tex_sampler");
+	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	shader->useProgram();
 	

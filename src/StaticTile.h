@@ -9,6 +9,16 @@
 /*
 	The Static Tile is a non-animated art tile. It's like one of the dirt tiles in Sonic.
 	This simply draws a texture to the screen onto a quad at the given location.
+	
+	SHADING
+	======================================================================================
+		Like the Animation, the Static Tile has requirements of shader code used to
+	render it. Required uniforms are:
+		
+		camera_matrix   : The mat4 that stores the camera coordinates.
+		location_matrix : The mat4 that stores the location of the object.
+		tex_sampler     : The sampler that will store the texture of the 
+		                  Static Tile.
 */
 class StaticTile : public ArtTile
 {
