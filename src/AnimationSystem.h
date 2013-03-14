@@ -35,7 +35,7 @@ struct ANIM_STATE
 	The integer identifier of this state.
 	*/
 	unsigned int stateID;
-}
+};
 
 class AnimationSystem
 {
@@ -55,7 +55,7 @@ class AnimationSystem
 		/*
 		Initializes the Animation system by giving it a location and size.
 		*/
-		void init(float x, float y, float z, float width, float height, int id);
+		void init(float x, float y, float z, float width, float height, unsigned int id);
 			
 		/*
 		Adds a new Animation State to the system, allocating a new State ID that is

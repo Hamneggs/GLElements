@@ -19,10 +19,13 @@ bool AnimatedTileBay::addTile(Animation * animation, float x=0, float y=0, float
 						float width=0, float height=0)
 {
 	unsigned int previousSize = tiles.size();
-	tiles.push_back(AnimatedTile(animation, x, y, z, width, height, currentID);
+
+	AnimatedTile toAdd;
+	bool shouldAdd = toAdd.init(animation, x, y, z, width, height, currentID);
+	if(shouldAdd){tiles.push_back(toAdd);}
 	
 	unsigned int currentSize = tiles.size();
-	return (current == previousSize+1);
+	return (currentSize == previousSize+1);
 }
 
 AnimatedTile * AnimatedTileBay::getTileByID(int id)

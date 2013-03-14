@@ -1,19 +1,5 @@
 #include "ArtTile.h"
 
-/*
-Renders the Art Tile.
-*/
-virtual void ArtTile::draw(void) = 0
-
-/*
-Renders the Art Tile at the given location.
-*/
-virtual void ArtTile::draw(float x, float y, float z) = 0
-
-/*
-Renders the Art Tile at the given location and size.
-*/
-virtual void ArtTile::draw(float x, float y, float z, float width, float height) = 0
 
 /*
 Sets the location of the Art Tile.

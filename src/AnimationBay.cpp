@@ -20,9 +20,10 @@ bool AnimationBay::addAnimation(GLTexture * texture, ShaderProgram * program, fl
 								float x=0, float y=0, float z=0, float width=0, float height=0)
 {
 	unsigned int previousSize = animations.size();
-	
-	animations.push_back(Animation(texture, camera, program, frameTime, numFrames, x, y, z, 
+	Animation toAdd;
+	bool shouldAdd = toAdd.init(texture, camera, program, frameTime, numFrames, x, y, z, 
 									width, height, currentID);
+	if(shouldAdd){animations.push_back(toAdd);}
 	currentID ++;
 	
 	unsigned int currentSize = animations.size();
@@ -54,7 +55,7 @@ Animation AnimationBay::removeAnimationByID(int id)
 		{
 			continue;
 		}
-		else if(animations[i].id == id)
+		else if(animations[i].getID() == id)
 		{
 			returnMe = animations[i];
 			indexOf = i;
@@ -76,7 +77,7 @@ bool AnimationBay::deleteAnimationByID(int id)
 		{
 			continue;
 		}
-		else if(animations[i].id == id)
+		else if(animations[i].getID() == id)
 		{
 			returnMe = animations[i];
 			indexOf = i;

@@ -7,10 +7,6 @@ StaticTile::StaticTile(void)
 	z = 0;
 	width = 0;
 	height = 0;
-	numFrames = 0;
-	startTime = 0;
-	curTime = 0;
-	curFrame = 0;
 	vertArray = 999999;
 	locationBO = 999999;
 	uvBO = 999999;
@@ -22,15 +18,13 @@ StaticTile::~StaticTile(void)
 {
 	glDeleteBuffers(1, &locationBO);
 	glDeleteBuffers(1, &uvBO);
-	glDeleteArrays(1, &vertArray);
+	glDeleteVertexArrays(1, &vertArray);
 }
 
 bool StaticTile::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, 
 				unsigned int newID)
 {
 	this->texture = texture;
-	this->frameTime = frameTime;
-	this->numFrames = numFrames;
 	this->shader = shaderProgram;
 	this->id = newID;
 	
@@ -43,8 +37,6 @@ bool StaticTile::init(GLTexture * texture, GLCamera * camera, ShaderProgram * sh
 					unsigned int newID)
 {
 	this->texture = texture;
-	this->frameTime = frameTime;
-	this->numFrames = numFrames;
 	this->shader = shaderProgram;
 	this->x = locX;
 	this->y = locY;
@@ -73,14 +65,14 @@ void StaticTile::draw(void)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
 	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
 	
-	uniformLocation = glGetuniformLocation(shader->getProgramID(), "tex_sampler");
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "tex_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
 
 	
 	
 	shader->useProgram();
 	
-	glBindVertexArray(vertexArray);
+	glBindVertexArray(vertArray);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindVertexArray(0);
@@ -103,19 +95,19 @@ void StaticTile::draw(float x, float y, float z)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
 	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());	
 	
-	uniformLocation = glGetuniformLocation(shader->getProgramID(), "tex_sampler");
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "tex_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	shader->useProgram();
 	
-	glBindVertexArray(vertexArray);
+	glBindVertexArray(vertArray);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindVertexArray(0);
 	shader->useProgram();
 }
 
-void StaticTile::void draw(float x, float y, float z, float width, float height)
+void StaticTile::draw(float x, float y, float z, float width, float height)
 {
 	texture->bindTexture();
 	
@@ -131,12 +123,12 @@ void StaticTile::void draw(float x, float y, float z, float width, float height)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
 	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());	
 	
-	uniformLocation = glGetuniformLocation(shader->getProgramID(), "tex_sampler");
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "tex_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	shader->useProgram();
 	
-	glBindVertexArray(vertexArray);
+	glBindVertexArray(vertArray);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindVertexArray(0);
@@ -218,13 +210,13 @@ void StaticTile::initVerts(void)
 
 	glBindVertexArray(vertArray);
 	
-	glBindBuffer(GL_ARRAY_BUFFER, &locationBO);
+	glBindBuffer(GL_ARRAY_BUFFER, locationBO);
 	
 	glBufferData(GL_ARRAY_BUFFER, 12*sizeof(float), verts, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, &uvBO);
+	glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 	glBufferData(GL_ARRAY_BUFFER, 8*sizeof(float), uv, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);

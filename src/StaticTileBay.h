@@ -2,7 +2,7 @@
 #define STATIC_TILE_BAY_GUARD
 
 #include <vector>
-#include "tilesTile.h"
+#include "StaticTile.h"
 
 /*
 	This class is meant to be a collection of tiles Tiles.
@@ -60,3 +60,4 @@ class StaticTileBay{
 		unsigned int currentID;
 		
 };
+#endif

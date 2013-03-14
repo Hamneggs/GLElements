@@ -16,14 +16,14 @@ Animation::Animation(void)
 	uvBO = 999999;
 	texture = NULL;
 	shader = NULL;
-	advanceMode = 0;
+	advanceMode = (ADVANCE_MODE)0;
 }
 
 Animation::~Animation(void)
 {
 	glDeleteBuffers(1, &locationBO);
 	glDeleteBuffers(1, &uvBO);
-	glDeleteArrays(1, &vertArray);
+	glDeleteVertexArrays(1, &vertArray);
 }
 
 bool Animation::init(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, 
@@ -85,14 +85,14 @@ void Animation::draw(void)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
 	glUniform1i(uniformLocation, numFrames);
 	
-	uniformLocation = glGetuniformLocation(shader->getProgramID(), "anim_sampler");
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "anim_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	
 	
 	shader->useProgram();
 	
-	glBindVertexArray(vertexArray);
+	glBindVertexArray(vertArray);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindVertexArray(0);
@@ -125,21 +125,21 @@ void Animation::draw(float x, float y, float z)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
 	glUniform1i(uniformLocation, numFrames);
 	
-	uniformLocation = glGetuniformLocation(shader->getProgramID(), "anim_sampler");
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "anim_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	
 	
 	shader->useProgram();
 	
-	glBindVertexArray(vertexArray);
+	glBindVertexArray(vertArray);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindVertexArray(0);
 	shader->useProgram();
 }
 
-void Animation::void draw(float x, float y, float z, float width, float height)
+void Animation::draw(float x, float y, float z, float width, float height)
 {
 	if(advanceMode == PASSIVE_ADVANCE)
 	{
@@ -165,13 +165,13 @@ void Animation::void draw(float x, float y, float z, float width, float height)
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "num_frames");
 	glUniform1i(uniformLocation, numFrames);
 	
-	uniformLocation = glGetuniformLocation(shader->getProgramID(), "anim_sampler");
+	uniformLocation = glGetUniformLocation(shader->getProgramID(), "anim_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
 	
 	
 	shader->useProgram();
 	
-	glBindVertexArray(vertexArray);
+	glBindVertexArray(vertArray);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindVertexArray(0);
@@ -240,7 +240,7 @@ void Animation::forceUpdateFrame(void)
 	curFrame %= numFrames;
 }
 
-int Animation::getCurrentFrame(void)
+unsigned int Animation::getCurrentFrame(void)
 {
 	return curFrame;
 }
@@ -289,7 +289,7 @@ void Animation::setNumFrames(int newNumFrames)
 	numFrames = newNumFrames;
 }
 
-int Animation::getNumFrames(void)
+unsigned int Animation::getNumFrames(void)
 {
 	return numFrames;
 }
@@ -379,13 +379,13 @@ void Animation::initVerts(void)
 
 	glBindVertexArray(vertArray);
 	
-	glBindBuffer(GL_ARRAY_BUFFER, &locationBO);
+	glBindBuffer(GL_ARRAY_BUFFER, locationBO);
 	
 	glBufferData(GL_ARRAY_BUFFER, 12*sizeof(float), verts, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, &uvBO);
+	glBindBuffer(GL_ARRAY_BUFFER, uvBO);
 	glBufferData(GL_ARRAY_BUFFER, 8*sizeof(float), uv, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);

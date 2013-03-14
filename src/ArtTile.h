@@ -74,8 +74,6 @@ class ArtTile
 		Returns the ID of this Art Tile.
 		*/
 		unsigned getID(void);
-		
-	protected:
 	
 		/*
 		The ID of this Art Tile.

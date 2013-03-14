@@ -96,7 +96,7 @@ bool AnimationSystem::deleteState(unsigned int stateIDToDelete)
 	bool found = false;
 	for(unsigned int i = 0; i < states.size(); i++)
 	{
-		if(states[i].stateID == stateIDToReplace)
+		if(states[i].stateID == stateIDToDelete)
 		{
 			index = i;
 			found = true;
@@ -157,7 +157,7 @@ void AnimationSystem::setSize(float newWidth, float newHeight)
 void AnimationSystem::changeSize(float changeWidth, float changeHeight)
 {
 	width += changeWidth;
-	height ++ changeHeight;
+	height += changeHeight;
 }
 
 void AnimationSystem::drawSystem(void)

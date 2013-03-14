@@ -1,7 +1,6 @@
 #ifndef GL_ANIMATION_GUARD
 #define GL_ANIMATION_GUARD
 
-#include "freeimage.h"
 #include "Shaders.h"
 #include "GLTexture.h"
 #include "glm/glm.hpp"
@@ -12,6 +11,25 @@
 #include <sys/time.h>
 #else
 #include <windows.h>
+#endif
+
+/*
+Determines the frame advance mode of the Animation.
+*/
+enum ADVANCE_MODE{
+
+	/*
+	You must call one of the frame advance methods to change the current
+	frame.
+	*/
+	ACTIVE_ADVANCE = 0,
+	
+	/*
+	Frame advancing is handled internally and is determined by clock.
+	This allows for proper operation despite framerate.
+	*/
+	PASSIVE_ADVANCE = 1
+};
 
 /*
 	This class represents a single animation that can be drawn to the screen.
@@ -318,7 +336,7 @@ class Animation{
 		/*
 		The duration of each frame of animation.
 		*/
-		float frametime;
+		float frameTime;
 		
 		/*
 		The total number of frames.
@@ -379,23 +397,4 @@ class Animation{
 		GLCamera * camera;
 		
 };
-
-/*
-Determines the frame advance mode of the Animation.
-*/
-enum ADVANCE_MODE{
-
-	/*
-	You must call one of the frame advance methods to change the current
-	frame.
-	*/
-	ACTIVE_ADVANCE = 0,
-	
-	/*
-	Frame advancing is handled internally and is determined by clock.
-	This allows for proper operation despite framerate.
-	*/
-	PASSIVE_ADVANCE = 1
-};
-
 #endif

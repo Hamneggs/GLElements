@@ -1,9 +1,9 @@
 #ifndef GLCAMERA_GUARD
 #define GLCAMERA_GUARD
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#include <glm/gtc/type_ptr.hpp>
+#include "glm.hpp"
+#include "gtc/matrix_transform.hpp"
+#include <gtc/type_ptr.hpp>
 
 /*
 	GLCamera is just what it sounds like. This class encapsulates

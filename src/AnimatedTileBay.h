@@ -60,3 +60,4 @@ class AnimatedTileBay{
 		unsigned int currentID;
 		
 };
+#endif

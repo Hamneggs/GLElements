@@ -12,7 +12,7 @@ GLCamera::~GLCamera(void)
 
 void GLCamera::lookAt(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ)
 {
-	cameraMatrix = glm::lookAt(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ);
+	cameraMatrix = glm::lookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 }
 
 glm::mat4 * GLCamera::getCameraMatrix(void)

@@ -6,7 +6,6 @@
 #include <GL\glut.h>
 #include <stdio.h>
 #include "GLTexture.h"
-#include "Const.h"
 class GLFrameBuffer
 {
 public:

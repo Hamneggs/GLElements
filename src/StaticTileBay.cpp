@@ -18,11 +18,13 @@ bool StaticTileBay::init(void)
 bool StaticTileBay::addTile(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float x=0, float y=0, float z=0, 
 						float width=0, float height=0)
 {
+	StaticTile toAdd;
 	unsigned int previousSize = tiles.size();
-	tiles.push_back(StaticTile(animation, x, y, z, width, height, currentID);
+	toAdd.init(texture, camera, shaderProgram, x, y, z, width, height, currentID);
+	tiles.push_back(toAdd);
 	
 	unsigned int currentSize = tiles.size();
-	return (current == previousSize+1);
+	return (currentSize == previousSize+1);
 }
 
 StaticTile * StaticTileBay::getTileByID(int id)
