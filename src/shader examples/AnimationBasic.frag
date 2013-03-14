@@ -19,6 +19,8 @@ in vec2 texCoord;
 // actually perform the animation.
 uniform int cur_frame;
 uniform int num_frames;
+
+// Finally the texture of the Animation stored in a sampler object.
 uniform sampler2D anim_sampler;
 
 // The main (and sole) function of the fragment shader.

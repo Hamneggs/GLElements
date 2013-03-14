@@ -19,6 +19,9 @@
 		location_matrix : The mat4 that stores the location of the object.
 		tex_sampler     : The sampler that will store the texture of the 
 		                  Static Tile.
+						
+		Vertex location data is required at layout position 0, and UV coordinate
+	data is required at layout position 1. 
 */
 class StaticTile : public ArtTile
 {
