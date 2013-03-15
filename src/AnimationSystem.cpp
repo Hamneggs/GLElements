@@ -27,7 +27,7 @@ void AnimationSystem::init(float x, float y, float z, float width, float height,
 
 int AnimationSystem::addNewState(Animation * newAnimation)
 {
-	int maxID = 0;
+	unsigned int maxID = 0;
 	for(unsigned int i = 0; i < states.size(); i++)
 	{
 		if(states[i].stateID >= maxID)

@@ -7,10 +7,10 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "GLCamera.h"
 
-#ifndef _WIN32
-#include <sys/time.h>
+#ifdef _WIN32
+#include <Windows.h>
 #else
-#include <windows.h>
+#include <sys/time.h>
 #endif
 
 /*

@@ -75,10 +75,10 @@ void Animation::draw(void)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(modelScaleAndTranslation));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(*camera->getCameraMatrix()));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
 	glUniform1i(uniformLocation, curFrame);
@@ -115,10 +115,10 @@ void Animation::draw(float x, float y, float z)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(modelScaleAndTranslation));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(*camera->getCameraMatrix()));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
 	glUniform1i(uniformLocation, curFrame);
@@ -155,10 +155,10 @@ void Animation::draw(float x, float y, float z, float width, float height)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(modelScaleAndTranslation));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(*camera->getCameraMatrix()));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
 	glUniform1i(uniformLocation, curFrame);
@@ -254,7 +254,7 @@ void Animation::resetTimer(void)
 {
 	#ifdef _WIN32
 	// Now this is nice and easy.
-	DWORD currentTime = getTickCount();
+	DWORD currentTime = GetTickCount();
 	startTime = (unsigned int)currentTime;
 	curTime = (unsigned int)currentTime;
 	
@@ -400,7 +400,7 @@ void Animation::updateTimer(void)
 {
 	#ifdef _WIN32
 	// Now this is nice and easy.
-	DWORD currentTime = getTickCount();
+	DWORD currentTime = GetTickCount();
 	curTime = (unsigned int)currentTime;
 	
 	#else

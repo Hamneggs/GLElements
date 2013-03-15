@@ -60,10 +60,10 @@ void StaticTile::draw(void)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(modelScaleAndTranslation));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(*camera->getCameraMatrix()));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "tex_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
@@ -90,10 +90,10 @@ void StaticTile::draw(float x, float y, float z)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(modelScaleAndTranslation));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());	
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(*camera->getCameraMatrix()));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "tex_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());
@@ -118,10 +118,10 @@ void StaticTile::draw(float x, float y, float z, float width, float height)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(modelScaleAndTranslation));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());	
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(*camera->getCameraMatrix()));
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "tex_sampler");
 	glUniform1i(uniformLocation, texture->getSamplerID());

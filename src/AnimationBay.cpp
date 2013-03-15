@@ -38,11 +38,12 @@ Animation * AnimationBay::getAnimationByID(unsigned int id)
 		{
 			continue;
 		}
-		else if(animations[i].id == id)
+		else if(animations[i].getID() == id)
 		{
 			return &animations[i];
 		}
 	}
+	return NULL;
 }
 
 Animation AnimationBay::removeAnimationByID(unsigned int id)
