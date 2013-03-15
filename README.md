@@ -11,5 +11,6 @@ This repository does use several existing libraries such as:
 * FreeImage - This is used for texture loading. It's really robust for its size, and recommend it to anyone.
 * GLM - I properly use matrices for location and camera data. This provides the mathematical functionality to do so.
 * GLUT - It's there for misellaneous OpenGL functionality, but isn't entirely necessary for the use of the GL elements.
+
 On the bright side, all of these libraries are included in src/dependencies. Just add these directories 
 to your existing link and header directories and you are good to go!
