@@ -15,8 +15,8 @@ bool StaticTileBay::init(void)
 	return true;
 }
 
-bool StaticTileBay::addTile(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float x=0, float y=0, float z=0, 
-						float width=0, float height=0)
+bool StaticTileBay::addTile(GLTexture * texture, GLCamera * camera, ShaderProgram * shaderProgram, float x, float y, float z, 
+						float width, float height)
 {
 	StaticTile toAdd;
 	unsigned int previousSize = tiles.size();
@@ -40,6 +40,7 @@ StaticTile * StaticTileBay::getTileByID(int id)
 			return &tiles[i];
 		}
 	}
+	return NULL;
 }
 
 StaticTile StaticTileBay::removeTileByID(int id)

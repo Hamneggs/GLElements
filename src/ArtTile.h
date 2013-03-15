@@ -83,26 +83,26 @@ class ArtTile
 		/*
 		The X location of this Art Tile.
 		*/
-		int x;
+		float x;
 		/*
 		The Y location of this Art Tile.
 		*/
-		int y;
+		float y;
 		
 		/*
 		The Z location of this Art Tile.
 		*/
-		int z;
+		float z;
 		
 		/*
 		The width of this Art Tile.
 		*/
-		int width;
+		float width;
 		
 		/*
 		The height of this Art Tile.
 		*/
-		int height;
+		float height;
 };
 
 #endif

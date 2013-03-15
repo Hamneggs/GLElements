@@ -15,8 +15,8 @@ bool AnimatedTileBay::init(void)
 	return true;
 }
 
-bool AnimatedTileBay::addTile(Animation * animation, float x=0, float y=0, float z=0, 
-						float width=0, float height=0)
+bool AnimatedTileBay::addTile(Animation * animation, float x, float y, float z, 
+						float width, float height)
 {
 	unsigned int previousSize = tiles.size();
 
@@ -41,6 +41,7 @@ AnimatedTile * AnimatedTileBay::getTileByID(int id)
 			return &tiles[i];
 		}
 	}
+	return NULL;
 }
 
 AnimatedTile AnimatedTileBay::removeTileByID(int id)

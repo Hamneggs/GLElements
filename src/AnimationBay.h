@@ -37,17 +37,17 @@ class AnimationBay{
 		/*
 		Returns an Animation by searching for it in the arraylist.
 		*/
-		Animation * getAnimationByID(int id);
+		Animation * getAnimationByID(unsigned int id);
 		
 		/*
 		Removes an Animation from the bay and returns it whole.
 		*/
-		Animation removeAnimationByID(int id);
+		Animation removeAnimationByID(unsigned int id);
 		
 		/*
 		Deletes an Animation without returning it.
 		*/
-		bool deleteAnimationByID(int id);
+		bool deleteAnimationByID(unsigned int id);
 		
 		/*
 		Sets the camera that is supplied to all of the Animations in the bay.

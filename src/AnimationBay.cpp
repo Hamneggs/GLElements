@@ -17,7 +17,7 @@ bool AnimationBay::init(GLCamera * camera)
 }
 
 bool AnimationBay::addAnimation(GLTexture * texture, ShaderProgram * program, float frameTime, int numFrames,
-								float x=0, float y=0, float z=0, float width=0, float height=0)
+								float x, float y, float z, float width, float height)
 {
 	unsigned int previousSize = animations.size();
 	Animation toAdd;
@@ -45,7 +45,7 @@ Animation * AnimationBay::getAnimationByID(unsigned int id)
 	}
 }
 
-Animation AnimationBay::removeAnimationByID(int id)
+Animation AnimationBay::removeAnimationByID(unsigned int id)
 {
 	Animation returnMe;
 	unsigned int indexOf = 99999999;
@@ -66,7 +66,7 @@ Animation AnimationBay::removeAnimationByID(int id)
 	return returnMe;
 }
 
-bool AnimationBay::deleteAnimationByID(int id)
+bool AnimationBay::deleteAnimationByID(unsigned int id)
 {
 	Animation returnMe;
 	unsigned int indexOf = 99999999;

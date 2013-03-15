@@ -75,10 +75,10 @@ void Animation::draw(void)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
 	glUniform1i(uniformLocation, curFrame);
@@ -115,10 +115,10 @@ void Animation::draw(float x, float y, float z)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
 	glUniform1i(uniformLocation, curFrame);
@@ -155,10 +155,10 @@ void Animation::draw(float x, float y, float z, float width, float height)
 	glm::mat4 modelScaleAndTranslation = modelScale * modelTranslation;
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "model_matrix");
-	glUniformMat4fv(uniformLocation, modelScaleAndTranslation);
+	glUniformMatrix4fv(uniformLocation, modelScaleAndTranslation);
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "camera_matrix");
-	glUniformMat4fv(uniformLocation, camera->getCameraMatrix());
+	glUniformMatrix4fv(uniformLocation, camera->getCameraMatrix());
 	
 	uniformLocation = glGetUniformLocation(shader->getProgramID(), "cur_frame");
 	glUniform1i(uniformLocation, curFrame);
