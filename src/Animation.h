@@ -3,8 +3,8 @@
 
 #include "Shaders.h"
 #include "GLTexture.h"
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#include "dependencies/glm/glm.hpp"
+#include "dependencies/glm/gtc/matrix_transform.hpp"
 #include "GLCamera.h"
 
 #ifdef _WIN32

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <GL\glew.h>
 #include <GL\glut.h>
-#include <FreeImage.h>
+#include "dependencies/freeimage/FreeImage.h"
 #include <stdio.h>
 class GLTexture
 {
