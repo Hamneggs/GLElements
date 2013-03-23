@@ -38,6 +38,22 @@ class GLCamera{
 		Returns a pointer to the underlying matrix.
 		*/
 		glm::mat4 * getCameraMatrix(void);
+
+		/*
+		Returns the X location stored in the camera matrix.
+		*/
+		float getX(void);
+
+		/*
+		Returns the Y location stored in the camera matrix.
+		*/
+		float getY(void);
+
+		/*
+		Returns the Z location stored in the camera matrix.
+		*/
+		float getZ(void);
+
 	private:
 	
 		/*

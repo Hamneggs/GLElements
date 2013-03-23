@@ -20,3 +20,18 @@ glm::mat4 * GLCamera::getCameraMatrix(void)
 	return &cameraMatrix;
 }
 
+float GLCamera::getX(void)
+{
+	return glm::value_ptr(cameraMatrix)[0];
+}
+
+float GLCamera::getY(void)
+{
+	return glm::value_ptr(cameraMatrix)[1];
+}
+
+float GLCamera::getZ(void)
+{
+	return glm::value_ptr(cameraMatrix)[2];
+}
+

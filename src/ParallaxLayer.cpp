@@ -1,4 +1,6 @@
-ParallaxLayer::ParallaxLayer
+#include "ParallaxLayer.h"
+
+ParallaxLayer::ParallaxLayer(void)
 {
 	camera = NULL;
 	tile = NULL;
@@ -9,14 +11,14 @@ ParallaxLayer::ParallaxLayer
 	prevZ = 0.0;
 }
 
-ParallaxLayer::~ParallaxLayer
+ParallaxLayer::~ParallaxLayer(void)
 {
 	// Don't really need to do anything here.
 }
 
 bool ParallaxLayer::init(GLCamera * cameraToUse, ArtTile * tileToUse, float movementScale, bool updateAtDraw)
 {
-	camera = cameraTouse;
+	camera = cameraToUse;
 	tile = tileToUse;
 	moveScale = movementScale;
 	this->updateAtDraw = updateAtDraw;
