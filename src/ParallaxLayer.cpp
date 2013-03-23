@@ -77,7 +77,7 @@ void ParallaxLayer::draw(void)
 {
 	if(updateAtDraw)
 	{
-		tile->changeLocation(camera->getX()-prevX, camera->getY()-prevY, camera->getZ()-prevZ);
+		tile->changeLocation( (camera->getX()-prevX)*moveScale, (camera->getY()-prevY)*moveScale, (camera->getZ()-prevZ)*moveScale);
 		prevX = camera->getX();
 		prevY = camera->getY();
 		prevZ = camera->getZ();
